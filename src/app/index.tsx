@@ -60,3 +60,4 @@ const HomeScreen = ({ onPress, text }: BotaoProps) => {
 };
 
 export default HomeScreen;
+coisa
