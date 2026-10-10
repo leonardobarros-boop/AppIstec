@@ -4,7 +4,11 @@ export interface BotaoProps {
 }
 
 export type Tarefa = {
-    id:string
-    title:string
-    concluido: boolean
-}
+  id: string;
+  title: string;
+  concluida: boolean;
+};
+
+export type Filtro = "todos" | "concluidas" | "pendentes";
+
+
