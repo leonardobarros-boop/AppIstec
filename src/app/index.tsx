@@ -1,50 +1,65 @@
 import Header from "@/components/Header";
+import { Tarefa } from "./types";
 import { useState } from "react";
-import { Button, Image, ScrollView, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 
 interface BotaoProps {
   text: string;
   onPress: () => void;
 }
 
+
 const HomeScreen = ({ onPress, text }: BotaoProps) => {
-  const nome = "Afonso";
-  const idade = 25;
-  const [email, setEmail] = useState<string>("" as string); // 2 formas de tipificar
-  const [curso, setCurso] = useState("Engenharia Informatica");
-  const valida = curso.length > 0;
-  console.log(email);
+
+  const [curso, setCurso] = useState("Curso do Mal");
+  const [email, setEmail] = useState("");
+  const nome = "Andre Freire";
+  const idade = 32;
+  const adjetivo = "Feio";
+  const [imagem, setImagem] = useState(false);
+  const [contador, setContador] = useState(0);
+  const valida = false;
+  const [tarefas, setTarefa] = useState([] as Array<Tarefa>);
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      borderWidth: 5,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    gif: {
+      width: 196,
+      height: 294,
+    },
+  });
+
   return (
-    <View
-      style={[
-        {
-          flex: 1,
-          borderWidth: 5,
-          alignItems: "center",
-          justifyContent: "center",
-        },
-        // valida && { backgroundColor: "#000" },
-      ]}
-    >
+    <View style={styles.container}>
       <ScrollView>
-        <Header title="Home Screen" />
+        <Header title="Inicio" />
         <Text>{nome}</Text>
         <Text>{idade + 10}</Text>
-        {/* <Text>{text}</Text> */}
+        <Text>{text}</Text>
         <Text>{curso}</Text>
-        <Text>{email}</Text>
-        <TextInput
-          value={email}
-          onChangeText={setEmail}
-          placeholder="Digite o email"
-        />
-        <Button onPress={() => setCurso("Novo Curso")} title="Button1" />
-        {/* Imagem remota */}
+
+        <Button onPress={() => setCurso("Curso Fixe😎")} title="Button1" />
+
         <Image
-          source={{ uri: "https://via.placeholder.com/150" }}
-          style={{ width: 150, height: 150 }}
+          source={ imagem ? require("./../../assets/images/icon.png") : { uri: "https://media.giphy.com/media/04DMYESomjb6BCBNB8/giphy.gif " }}
+
+          style={styles.gif}
+          resizeMode="contain"
         />
-        {/* Imagem local */}
+
         <Image
           source={require("./../../assets/images/icon.png")}
           style={{ width: 150, height: 150 }}
@@ -52,12 +67,20 @@ const HomeScreen = ({ onPress, text }: BotaoProps) => {
         {/* Operador ternário */}
         <Text>{valida ? "Válido" : "Inválido"}</Text>
         <Text style={{ fontSize: 20 }}>
-          Bla bla bla text <Text style={{ fontWeight: "bold" }}>longo</Text>
+          Bruh <Text style={{ fontWeight: "bold" }}>Bruhhh</Text>
         </Text>
+        <TouchableOpacity onPress={onPress}>
+          <Text>{text || "Respect the sigma"}</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => setImagem(!imagem)}>
+          <Text>Mudar imagem</Text>
+        </TouchableOpacity>
+
       </ScrollView>
     </View>
   );
 };
 
 export default HomeScreen;
-coisa
