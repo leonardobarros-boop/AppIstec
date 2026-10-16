@@ -9,6 +9,4 @@ export type Tarefa = {
   concluida: boolean;
 };
 
-export type Filtro = "todos" | "concluidas" | "pendentes";
-
-
+export type Filtro = "todas" | "concluidas" | "pendentes";
