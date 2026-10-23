@@ -99,6 +99,12 @@ const TarefasScreen = ({ navigation }: Props) => {
             onDelete={() =>
               setTarefas(tarefas.filter((t) => t.id !== tarefa.id))
             }
+            onDetalhes={() =>
+              navigation.navigate("DetalhesScreen", {
+                title: tarefa.title,
+                concluida: tarefa.concluida,
+              })
+            }
             title={tarefa.title}
             concluida={tarefa.concluida}
           />

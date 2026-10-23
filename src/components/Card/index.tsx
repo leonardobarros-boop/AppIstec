@@ -6,9 +6,10 @@ type CardProps = {
   concluida: boolean;
   onConcluir: () => void;
   onDelete: () => void;
+  onDetalhes: () => void;
 };
 
-const Card = ({ title, concluida, onConcluir, onDelete }: CardProps) => {
+const Card = ({ title, concluida, onConcluir, onDelete, onDetalhes }: CardProps) => {
   return (
     <View
       style={{
@@ -37,6 +38,7 @@ const Card = ({ title, concluida, onConcluir, onDelete }: CardProps) => {
           title={concluida ? "Desmarcar" : "Marcar concluída"}
         />
         <AppButton onPress={onDelete} title="Eliminar" />
+        <AppButton onPress={onDetalhes} title="Detalhes" />
       </View>
     </View>
   );
